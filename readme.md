@@ -14,9 +14,25 @@
 		Skills
 			- directive ng-app
 			- directive ng-controller
+			
 			- $scope
 			- $rootScope
-			- 	
+			
+			- directive ng-click	
+			- directive ng-change	
+			- directive ng-focus
+			- directive ng-blur
+			- directive ng-copy
+			- directive ng-cut
+			- directive ng-paste
+			- directive ng-dblclick
+			
+			KeyboardEvents
+				- directive ng-keydown
+				- directive ng-keypress
+				- directive ng-keyup
+			
+			MouseEvents
 		
 		
 		
