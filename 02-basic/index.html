@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Basic Application</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<script src="./app/index.js"></script>
+	</head>
+
+	<body>
+
+		<div ng-app="basicApp">
+
+			<div class="container">
+				<div ng-controller="controllerTop">
+					{{user.name}} - {{user.surname}}
+				</div>
+
+				<div ng-controller="controllerBottom">
+					{{user}} - {{surname}}
+					<br><br><br>
+					<table class="table table-striped">
+						<tr>
+							<td>Name</td>
+							<td>Surname</td>
+						</tr>
+						<tr ng-repeat="user in usersArray">
+							<td>{{user.name}}</td>
+							<td>{{user.surname}}</td>
+						</tr>
+					</table>
+
+				</div>
+			</div>
+
+		</div>
+
+		<script>
+
+			//O Escopo se Usa de maneira Específica
+			//O RootScope desde a raiz
+			app.controller("controllerTop", function($rootScope,$scope){
+				//$scope.user = { //Aqui vai servia apenas para o contexto do controller
+				$rootScope.user = { //Aqui para todo o contexto, veja que ng-controller botom imprime o valor devido o 						// rootScope
+					name: "Carlos",
+					surname:"Roberto"
+				};
+
+			});
+
+			app.controller("controllerBottom", function($scope){
+				var user = {
+					name:"Medeiros",
+					surname:"Brazil"
+				};
+				//$scope.user = user;
+
+				var usersArray = [
+					{name:"Carlos", surname:"Roberto"},
+					{name:"Luciene", surname:"Medeiros"},
+					{name:"Ezequias", surname:"Alves"}
+				];
+
+				$scope.usersArray = usersArray;
+			});
+
+			
+			
+		</script>
+
+	</body>
+
+</html>
