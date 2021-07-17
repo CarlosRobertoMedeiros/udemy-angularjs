@@ -1,7 +1,7 @@
 ### Front End Project With AngularJS
 
 ## Project Arch (1)
-	- First Project FrontEnd: AngularJS
+	- First Project FrontEnd: AngularJS 1.x
 
 ## Owner
 
@@ -12,27 +12,47 @@
 	#Front End
 		
 		Skills
+			
 			- directive ng-app
 			- directive ng-controller
 			
 			- $scope
 			- $rootScope
 			
-			- directive ng-click	
-			- directive ng-change	
-			- directive ng-focus
-			- directive ng-blur
-			- directive ng-copy
-			- directive ng-cut
-			- directive ng-paste
-			- directive ng-dblclick
+			Events
 			
-			KeyboardEvents
-				- directive ng-keydown
-				- directive ng-keypress
-				- directive ng-keyup
+				- directive ng-click	
+				- directive ng-change	
+				- directive ng-focus
+				- directive ng-blur
+				- directive ng-copy
+				- directive ng-cut
+				- directive ng-paste
+				- directive ng-dblclick
+				
+				KeyboardEvents
+					- directive ng-keydown
+					- directive ng-keypress
+					- directive ng-keyup
+				
+				MouseEvents
+					- directive ng-mousedown
+					- directive ng-mouseup
+					- directive ng-mouseenter
+					- directive ng-mouseleave
+					- directive ng-mousemove
+					- directive ng-mouseover
+					
+			Conditionals
+
+				- directive ng-if
+				- directive ng-hide
+				- directive ng-show
+				- directive ng-class
+				
+			Dependency Injection (DI)
 			
-			MouseEvents
+				
 		
 		
 		

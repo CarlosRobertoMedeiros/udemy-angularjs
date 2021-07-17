@@ -1,0 +1,122 @@
+<html>
+  <header>
+    <title>AngularJs in Action Documentation</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="./app/index.js"></script>
+  </header>
+    <body ng-app="basicApp" ng-controller="mainController">
+
+      <div class="row">
+
+          <div class="col-md-8 col-md-offset-2">
+            
+            <!--ng-if --> 
+            <div class="panel panel-primary">
+              <div class="panel-heading"><h5>ng-if</h5></div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <div>
+                      <h3>ng-if</h3>
+                      <p>Conditionally displays the innerHTML of the object</p>
+                      <input type="checkbox" ng-model="isCheckboxChecked" />
+                      <span ng-if="isCheckboxChecked">Checkbox IS checked</span>
+                      <span ng-if="!isCheckboxChecked">Checkbox IS NOT checked</span>
+                      <br>
+                      <br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--ng-hide --> 
+            <div class="panel panel-primary">
+              <div class="panel-heading"><h5>ng-hide</h5></div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <div>
+                      <h3>ng-hide</h3>
+                      <p>Conditionally hide the innerHTML of the object. The object is created in the DOM but it is not displayed jut when the condition is true</p>
+                      <input type="checkbox" ng-model="shouldHide" />
+                      <span ng-hide="shouldHide">Is hidden {{shouldHide}}</span>
+                      <br>
+                      <br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--ng-show --> 
+            <div class="panel panel-primary">
+              <div class="panel-heading"><h5>ng-show</h5></div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <div>
+                      <h3>ng-show</h3>
+                      <p>Conditionally show the innerHTML of the object. The object is created in the DOM but it is only displayed when the condition is true</p>
+                      {{shouldShow}}<input type="checkbox" ng-model="shouldShow"  ng-true-value="'YES'" ng-false-value="'NO'"/>
+                      <span ng-show="shouldShow === 'YES'">Showing the innerHTML of the object</span>
+                      <br>
+                      <br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--ng-class --> 
+            <div class="panel" ng-class="{'panel-success' : docStyle === 'Success',
+                                          'panel-warning' : docStyle === 'Warning' , 
+                                          'panel-default' : docStyle === 'primary'}">
+              <div class="panel-heading"><h5>ng-class</h5></div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <div>
+                      <h3>ng-class</h3>
+                      <p>Conditionally applies a style into a HTML element</p>
+                      <p>Style Selected is {{styleClass}}</p>
+                      Change style of the button 
+                      <input type="radio" name="styleClass" ng-model="styleClass" value="Success" />
+                      <input type="radio" name="styleClass" ng-model="styleClass" value="Warning" />
+                      <input type="radio" name="styleClass" ng-model="styleClass" value="Default" />
+                      <button class="btn" ng-class="{'btn-success' : styleClass === 'Success',
+                                                     'btn-warning' : styleClass === 'Warning' , 
+                                                     'btn-default' : styleClass === 'Default'}">{{styleClass}} Button</button>
+
+
+                      <br><br>
+                      Change style of the document section 
+                      <input type="radio" name="docStyle" ng-model="docStyle" value="Success" />
+                      <input type="radio" name="docStyle" ng-model="docStyle" value="Warning" />
+                      <input type="radio" name="docStyle" ng-model="docStyle" value="Primary" />
+                      <br>
+                      <br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+
+      </div>
+
+      <script>
+          app.controller("mainController", function($scope){
+            $scope.isCheckboxChecked = false;
+            $scope.shouldHide = false;
+            $scope.shouldShow = 'YES';
+            $scope.docStyle = 'primary';
+
+          });
+
+      </script>
+
+   
+    </body>
+</html>

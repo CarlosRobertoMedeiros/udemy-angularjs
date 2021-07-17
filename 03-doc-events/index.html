@@ -1,0 +1,278 @@
+<html>
+<header>
+  <title>AngularJs in Action Documentation</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="./app/index.js"></script>
+</header>
+<body ng-app="basicApp" ng-controller="mainController">
+  <h2 class="text-center"> Documentation of Event Tags</h2>
+
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <!-- ng-click -->
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h5>ng-click</h5></div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-8">
+              <div>
+                <h3>ng-click</h3>
+                <p>It gets triggered when the mouse clicks some object</p>
+                <input type="button" class="btn btn-danger" value="click me" ng-click="showAlert('ng-click')"/>
+                <br>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ng-dblclick -->
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h5>ng-dblclick</h5></div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-8">
+              <div>
+                <h3>ng-dblclick</h3>
+                <p>It gets triggered when the user double click the left button of the mouse on the object</p>
+                <input type="button" class="btn btn-danger" value="double click me" ng-dblclick="showAlert('NG-DBLCLICK')"/>
+                <br><br>
+                <input type="text" class="form-control" value="double click me" ng-dblclick="showAlert('NG-DBLCLICK')"/>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ng-change -->
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h5>ng-change</h5></div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-8">
+              <h3>ng-change</h3>
+              <p>It gets triggered when the dropdown or input field is changed. It also works on checkboxes
+              and radio buttons</p>
+              <select class="form-control" ng-model="valueToStore" ng-change="showAlert('ng-change')">
+                <option value="1">value 1</option>
+                <option value="2">value 2</option>
+                <option value="3">value 3</option>
+                <option value="4">value 4</option>
+              </select>
+              <br>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ng-focus -->
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h5>ng-focus</h5></div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-8">
+              <h3>ng-focus</h3>
+              <p>It gets triggered when any element get focused using tab key or mouse click</p>
+              <p>{{focusObj.dropdown}}</p>
+              <select class="form-control" ng-focus="markFocused('dropdown')">
+                <option value="1">value 1</option>
+                <option value="2">value 2</option>
+                <option value="3">value 3</option>
+                <option value="4">value 4</option>
+              </select>
+              <br>
+              <p>{{focusObj.input}}</p>
+              <input type="text" class="form-control" ng-focus="markFocused('input')"/>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ng-blur -->
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h5>ng-blur</h5></div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-8">
+              <h3>ng-blur</h3>
+              <p>It gets triggered when any element loses focus</p>
+              <select class="form-control" ng-blur="showAlert('ng-blur from the dropdown')">
+                <option value="1">value 1</option>
+                <option value="2">value 2</option>
+                <option value="3">value 3</option>
+                <option value="4">value 4</option>
+              </select>
+              <br>
+              <input type="text" class="form-control" ng-blur="showAlert('ng-blur from the input')"/>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ng-copy -->
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h5>ng-copy</h5></div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-8">
+              <h3>ng-copy</h3>
+              <p>It gets triggered when the user tries to copy the text using right click or CTRL + C</p>
+              <input type="text" class="form-control" ng-copy="showAlert(' NG-COPY')"/>
+              <br>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ng-cut -->
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h5>ng-cut</h5></div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-8">
+              <h3>ng-cut</h3>
+              <p>It gets triggered when the user tries to cut the text using right click or CTRL + X</p>
+              <input type="text" class="form-control" ng-cut="showAlert(' NG-CUT')"/>
+              <br>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ng-paste -->
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h5>ng-paste</h5></div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-8">
+              <h3>ng-paste</h3>
+              <p>It gets triggered when the user tries to cut the text using right click or CTRL + P</p>
+              <input type="text" class="form-control" ng-paste="showAlert(' NG-PASTE')"/>
+              <br>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- keyboard events -->
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3>Keyboard Events</h3>
+          <h5>ng-keydown, ng-keypress, ng-keyup</h5>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-8">
+              <h3>Keyboard Events</h3>
+              <p>They are basically triggered when the keys are pressed or released</p>
+              <ul>
+                <li><h4>ng-keydown</h4> is trigged when the key is pressed and it is on the down position</li>
+                <li><h4>ng-keypress</h4> is triggered when the key is pressed. It does not recognise CTRL, ALT nor SHIFT </li>
+                <li><h4>ng-keyup</h4> is triggered when the key is release</li>
+              </ul>
+              {{keyboardPosition}}
+              <input type="text"
+                     class="form-control"
+                     ng-keydown="keyboardPosition = 'key down'"
+                     ng-keyup="keyboardPosition = 'key up'"/>
+              <br>
+              {{keypressEvent}}
+              <input type="text"
+                     class="form-control"
+                     ng-keypress="keypressEvent = 'key pressed'"
+                     ng-keyup="keypressEvent = 'key up'"/>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- mouse events -->
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3>Mouse Events</h3>
+          <h5>ng-mousedown, ng-mouseup, ng-mouseenter, ng-mouseleave, ng-mousemove, ng-mouseover</h5>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-8">
+              <h3>Mouse Events</h3>
+              <p>They are triggered when the mouse moves or the buttons are clicked.</p>
+              <ul>
+                <li><h4>ng-mousedown</h4> is trigged when the mouse key is pressed and it is on the down position</li>
+                <li><h4>ng-mouseup</h4> is triggered when the mouse key is release</li>
+                <li><h4>ng-mouseenter</h4> is triggered when the mouse pointer enters the area of the object which is listening to the event</li>
+                <li><h4>ng-mouseleave</h4> is triggered when the mouse pointer leaves the area of the object which is listening to the event</li>
+                <li><h4>ng-mousemove</h4> is triggered everytime that the mouse moves on the area where the object is listening to the event</li>
+                <li><h4>ng-mouseover</h4> is triggered everytime that the mouse moves is over the area where the object is listening to the event</li>
+              </ul>
+            </div>
+          </div>
+          <div class="row" style="height:40px;">
+            <div class="col-md-3">
+              <button class="btn btn-primary" type="button" ng-mousedown="mouse.down = mouse.down + 1"> Mouse Down <span class="badge">{{mouse.down}}</span> times</button>
+            </div>
+            <div class="col-md-3">
+              <button class="btn btn-warning" type="button" ng-mouseup="mouse.up = mouse.up + 1">Mouse Up <span class="badge">{{mouse.up}}</span> times </button>
+            </div>
+            <div class="col-md-3">
+              <button class="btn btn-success" type="button" ng-mouseenter="mouse.enter = mouse.enter + 1">Mouse Enter <span class="badge">{{mouse.enter}}</span> times </button>
+            </div>
+          </div>
+          <div class="row" style="height:40px;">
+            <div class="col-md-3">
+              <button class="btn btn-default" type="button" ng-mouseleave="mouse.leave = mouse.leave + 1">Mouse Leave <span class="badge">{{mouse.leave}}</span></span> times </button>
+            </div>
+            <div class="col-md-3">
+              <button class="btn btn-danger" type="button" ng-mousemove="mouse.move = mouse.move + 1">Mouse Move <span class="badge">{{mouse.move}}</span> times </button>
+            </div>
+            <div class="col-md-3">
+              <button class="btn btn-primary" type="button" ng-mouseover="mouse.over = mouse.over + 1">Mouse Over <span class="badge">{{mouse.over}}</span> times </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script>
+  app.controller("mainController", function($scope) {
+
+    $scope.keyboardPosition = 'nothing happened yet';
+    $scope.keypressEvent = 'nothing happened yet';
+
+    $scope.mouse = {
+      down:0,
+      up:0,
+      enter:0,
+      leave:0,
+      move:0,
+      over:0
+    };
+    $scope.focusObj = {
+      dropdown: "not focused",
+      input: "not focused"
+    };
+
+    $scope.showAlert = function(origin) {
+      alert("This alert was triggered by " + origin);
+    };
+
+    $scope.markFocused = function(obj) {
+      $scope.focusObj[obj] = "object focused";
+    };
+
+  });
+  </script>
+</body>
+</html>
