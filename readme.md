@@ -52,8 +52,14 @@
 				
 			Dependency Injection (DI)
 			
-				
-		
+				- Using Controllers
+				- Multiply Controllers
+				- Factory
+				- Service
+				- Prototype and Inheritance
+			
+			Creating and Submitting Forms
+				- 
 		
 		
 		* To emulate the Front End use: http-server

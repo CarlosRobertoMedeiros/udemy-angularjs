@@ -1,0 +1,24 @@
+"use strict"
+
+var mainCtrl = function($scope){
+
+};
+
+app.controller("mainCtrl",['$scope', mainCtrl]);
+
+//Second way
+app.controller("secondaryCtrl",['$scope',function($scope){
+
+}]);
+
+//Thirdy way
+var mainCtrl = function($scope){
+
+};
+mainCtrl.$inject = ['$scope','$http'];
+app.controller("mainCtrl",['$scope', mainCtrl]);
+
+
+
+
+
