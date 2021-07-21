@@ -52,7 +52,9 @@ var formsController = function($scope){
 		//fromArray:{"value":1,"name":"This is one (array)"}	// Assim o angularJs não entende
 		fromArray: $scope.dropdownArray[1],
 		singleValueFromArray: 2
-	}
+	};
+
+	//requiredTest
 
 
 

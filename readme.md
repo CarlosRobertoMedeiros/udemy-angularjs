@@ -59,7 +59,14 @@
 				- Prototype and Inheritance
 			
 			Creating and Submitting Forms
-				- 
+
+				- directive ng-model
+				- directive ng-disabled
+				- directive ng-submit
+				- checkboxes Changing*
+				- directive ng-options
+				- input States
+				- form States
 		
 		
 		* To emulate the Front End use: http-server

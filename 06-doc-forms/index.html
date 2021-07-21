@@ -210,7 +210,111 @@
               </div>
             </div>
 
-          
+            <!--Using required and $valid --> 
+            <div class="panel panel-primary">
+              <div class="panel-heading"><h5>Using required and $valid</h5></div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <div>
+                      <h3>Using required and $valid</h3>
+                      <p>required is used to let angular know that the specific field is required.</p>
+                      <p>$valid is used in conjunction to required to verifiy if the fields was populated.</p>
+
+                      <form name="myForm">
+                          
+                          <input type="text" name="requiredTest"
+                                 ng-model="requiredTest" required>
+
+                      </form>
+                      <div class="alert alert-danger" ng-show="!myForm.requiredTest.$valid">Field is required</div>
+                      {{myForm.requiredTest.$valid}}    
+                      <br><br>
+                    </div>
+                  </div>  
+                </div>
+              </div> 
+            </div>
+
+            <!--Input states-->
+            <div class="panel panel-primary">
+              <div class="panel-heading"><h5>Input States</h5></div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <div>
+                      <h3>Input States</h3>
+                      <p>Input states help to validate fields and check when they are dirty or untouched and so on</p>
+                      <p>
+                        It contains:
+                        <ul>
+                          <li>$valid</li>
+                          <li>$invalid</li>
+                          <li>$dirty</li>
+                          <li>$pristine</li>
+                          <li>$touched</li>
+                          <li>$untouched</li>
+                        </ul>
+                      </p>
+                      <form name="statesForm">
+                        <input type="text" name="requiredTest" ng-model="requiredTest" required><span ng-show="(!statesForm.requiredTest.$valid && statesForm.requiredTest.$touched && !statesForm.requiredTest.$dirty)"> Ops come back here</span>
+                      </form>
+                      <div class="alert alert-danger" ng-show="(!statesForm.requiredTest.$valid && statesForm.requiredTest.$dirty)">Field is required</div>
+                      $valid: {{statesForm.requiredTest.$valid}}<br>
+                      $invalid: {{statesForm.requiredTest.$invalid}}<br>
+                      <hr>
+                      $dirty: {{statesForm.requiredTest.$dirty}}<br>
+                      $pristine: {{statesForm.requiredTest.$pristine}}<br>
+                      <hr>
+                      $touched: {{statesForm.requiredTest.$touched}}<br>
+                      $untouched: {{statesForm.requiredTest.$untouched}}<br>
+                      <br><br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> 
+
+            <!--Form states --> 
+            <div class="panel panel-primary">
+              <div class="panel-heading"><h5>Input States</h5></div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <div>
+                      <h3>Form States</h3>
+                      <p>Form states help to validate form and check when it is dirty or valid.</p>
+                      <p>It contains:
+                          <ul>
+                            <li>$valid</li>
+                            <li>$invalid</li>
+                            <li>$dirty</li>
+                            <li>$pristine</li>
+                            <li>$touched</li>
+                            <li>$untouched</li>
+                          </ul>
+                      </p>
+
+                      <form name="formState">
+                          Name:<input type="text" name="name" ng-model="name" required>
+                          Age:<input type="text" name="age" ng-model="age" required>
+                      </form>
+
+                      <div class="alert alert-danger" 
+                           ng-show="(!formState.$valid 
+                                      && formState.$dirty)">Form is not valid
+                      </div>
+                      $valid: {{formState.$valid}}<br>    
+                      $invalid: {{formState.$invalid}}<br>    
+                      <hr>
+                      $dirty: {{formState.$dirty}}<br>    
+                      $pristine: {{formState.$pristine}}<br>                         
+                      <br><br>
+                    </div>
+                  </div>  
+                </div>
+              </div> 
+            </div> 
 
 
 
