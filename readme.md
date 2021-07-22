@@ -67,6 +67,15 @@
 				- directive ng-options
 				- input States
 				- form States
+			
+			NodeJs and NPM
+				- install node
+				- install npm
+				- creating localhost server using ExpressJs
+			
+			Working with Broserify for dist folder
+			Directives
+				- 
 		
 		
 		* To emulate the Front End use: http-server
