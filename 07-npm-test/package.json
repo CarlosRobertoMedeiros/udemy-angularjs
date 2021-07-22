@@ -1,0 +1,19 @@
+{
+  "name": "07-npm-test",
+  "version": "0.1.0",
+  "description": "Simple App",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "carlosmedeiroslima@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "express": "~4.7.2",
+    "body-parser": "~1.5.2",
+    "lodash": "^4.17.4"
+  }
+}
+
+//I installed nodemon for live reload

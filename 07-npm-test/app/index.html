@@ -1,0 +1,331 @@
+<html>
+  <header>
+    <title>AngularJs in Action Documentation</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="./index.js"></script>
+	  <script src="./formsController.js"></script>
+  </header>
+    <body ng-app="basicApp" ng-controller="formsController">
+      <h2 class="text-center">Documentation of Forms</h2>
+
+      <div class="row">
+
+          <div class="col-md-8 col-md-offset-2">
+
+            <!--ng-model --> 
+            <div class="panel panel-primary">
+              <div class="panel-heading"><h5>ng-model</h5></div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <div>
+                      <h3>ng-model</h3>
+                      <p>it stores the value of the form fields into the controller into a scope variable</p>
+                      <input type="text" ng-model="form.carType" />
+                      <input type="checkbox" ng-model="form.hasTurbo" />
+                      <br>
+                      {{form}}
+                      <br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--ng-disabled --> 
+            <div class="panel panel-primary">
+              <div class="panel-heading"><h5>ng-disabled</h5></div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <div>
+                      <h3>ng-disabled</h3>
+                      <p>Disabled the form field if the condition is true</p>
+                      <input type="text" ng-model="formDisabled.name" ng-disabled="formDisabled.disableName" />
+                      <input type="checkbox" ng-model="formDisabled.disableName" />
+                      <br>
+                      {{formDisabled}}
+                      <br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--ng-submit --> 
+            <div class="panel panel-primary">
+              <div class="panel-heading"><h5>ng-submit</h5></div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <div>
+                      <h3>ng-submit</h3>
+                      <p>Submits the form calling a function that is in the scope</p>
+                      <form ng-submit="validateForm();">
+
+                        <label for="name">Name:</label>
+                        <input type="text" id="name"
+                               ng-model="formSubmit.name"/>
+
+                        <br>                               
+                        <label for="hasId">hasId:</label>
+                        <input type="checkbox" id="hasId" 
+                               ng-model="formSubmit.hasId" />
+                        <br>
+
+                        <input type="submit" value="Submit Form" class="btn btn-success" />
+                        <div class="alert alert-danger" ng-show="formSubmit.error !== undefined">{{formSubmit.error}}</div>
+
+                      </form>
+                      <br>
+                      {{formSubmit}}
+                      <br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--checkboxes --> 
+            <div class="panel panel-primary">
+              <div class="panel-heading"><h5>checkboxes</h5></div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <div>
+                      <h3>checkboxes</h3>
+                      <p>The various ways to defined the value returned when the checkbox is checked or not </p>
+                      
+                        <label for="cb1">True or False</label>
+                        <input type="checkbox" id="cb1"
+                               ng-model="checkbox.cb1"/>
+
+                        <br>                               
+                          <label for="cb2">Y or N</label>
+                          <input type="checkbox" id="cb2"
+                               ng-model="checkbox.cb2"
+                               ng-true-value="'Y'"
+                               ng-false-value="'N'"/>
+                        <br>
+                          <label for="cb3">Going or Not Going</label>
+                          <input type="checkbox" id="cb3"
+                               ng-model="checkbox.cb3"
+                               ng-true-value="'Going'"
+                               ng-false-value="'Not Going'"/>
+                        <br>
+                        {{checkbox}}
+                      <br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--ng-options --> 
+            <div class="panel panel-primary">
+              <div class="panel-heading"><h5>ng-options</h5></div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <div>
+                      <h3>ng-options</h3>
+                      <p>Load options into a dropdown sourced by a JSON array </p>
+                      
+                        <label for="manual">Manual Drop Down</label>
+                        <select id="manual" 
+                                ng-model="dropdown.manual">
+
+                          <option value="1">this is one (manual)</option>
+                          <option value="2">this is two (manual)</option>
+                          <option value="3">this is three (manual)</option>
+                        
+                        </select>
+
+                        <br>
+                        <label for="fromArray">Array Drop Down</label>
+                        <select id="fromArray" 
+                                ng-model="dropdown.fromArray"
+                                ng-options="item as item.name for item in dropdownArray">
+                        </select>
+                        <br>
+                        <label for="singleValueFromArray">Single Value Array Drop Down</label>
+                        <select id="singleValueFromArray" 
+                                ng-model="dropdown.singleValueFromArray"
+                                ng-options="item.value as item.name for item in dropdownArray">
+                        </select>
+
+                        <br>                              
+                        Manual:{{dropdown.manual}}<br>
+                        Array:{{dropdown.fromArray}}<br>
+                        Single Value:{{dropdown.singleValueFromArray}}<br>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--select default Option --> 
+            <div class="panel panel-primary">
+              <div class="panel-heading"><h5>Dropdown - Selecting the Default Option</h5></div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <div>
+                      <h3>Dropdown - Selecting the Default Option</h3>
+                      <p>Selecting the default option for diferent types of dropdown options</p>
+                      
+                        <label for="manualSelected">Manual Drop Down</label>
+                        <select id="manualSelected" 
+                                ng-model="default.manual">
+
+                          <option value="1">this is one (manual)</option>
+                          <option value="2">this is two (manual)</option>
+                          <option value="3">this is three (manual)</option>
+                        
+                        </select>
+
+                        <br>
+                        <label for="fromArraySelected">Array Drop Down</label>
+                        <select id="fromArraySelected" 
+                                ng-model="default.fromArray"
+                                ng-options="item as item.name for item in dropdownArray">
+                        </select>
+                        <br>
+                        <label for="singleValueFromArraySelected">Single Value Array Drop Down</label>
+                        <select id="singleValueFromArraySelected" 
+                                ng-model="default.singleValueFromArray"
+                                ng-options="item.value as item.name for item in dropdownArray">
+                        </select>
+
+                        <br>                              
+                        Manual:{{default.manual}}<br>
+                        Array:{{default.fromArray}}<br>
+                        Single Value:{{default.singleValueFromArray}}<br>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--Using required and $valid --> 
+            <div class="panel panel-primary">
+              <div class="panel-heading"><h5>Using required and $valid</h5></div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <div>
+                      <h3>Using required and $valid</h3>
+                      <p>required is used to let angular know that the specific field is required.</p>
+                      <p>$valid is used in conjunction to required to verifiy if the fields was populated.</p>
+
+                      <form name="myForm">
+                          
+                          <input type="text" name="requiredTest"
+                                 ng-model="requiredTest" required>
+
+                      </form>
+                      <div class="alert alert-danger" ng-show="!myForm.requiredTest.$valid">Field is required</div>
+                      {{myForm.requiredTest.$valid}}    
+                      <br><br>
+                    </div>
+                  </div>  
+                </div>
+              </div> 
+            </div>
+
+            <!--Input states-->
+            <div class="panel panel-primary">
+              <div class="panel-heading"><h5>Input States</h5></div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <div>
+                      <h3>Input States</h3>
+                      <p>Input states help to validate fields and check when they are dirty or untouched and so on</p>
+                      <p>
+                        It contains:
+                        <ul>
+                          <li>$valid</li>
+                          <li>$invalid</li>
+                          <li>$dirty</li>
+                          <li>$pristine</li>
+                          <li>$touched</li>
+                          <li>$untouched</li>
+                        </ul>
+                      </p>
+                      <form name="statesForm">
+                        <input type="text" name="requiredTest" ng-model="requiredTest" required><span ng-show="(!statesForm.requiredTest.$valid && statesForm.requiredTest.$touched && !statesForm.requiredTest.$dirty)"> Ops come back here</span>
+                      </form>
+                      <div class="alert alert-danger" ng-show="(!statesForm.requiredTest.$valid && statesForm.requiredTest.$dirty)">Field is required</div>
+                      $valid: {{statesForm.requiredTest.$valid}}<br>
+                      $invalid: {{statesForm.requiredTest.$invalid}}<br>
+                      <hr>
+                      $dirty: {{statesForm.requiredTest.$dirty}}<br>
+                      $pristine: {{statesForm.requiredTest.$pristine}}<br>
+                      <hr>
+                      $touched: {{statesForm.requiredTest.$touched}}<br>
+                      $untouched: {{statesForm.requiredTest.$untouched}}<br>
+                      <br><br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> 
+
+            <!--Form states --> 
+            <div class="panel panel-primary">
+              <div class="panel-heading"><h5>Input States</h5></div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <div>
+                      <h3>Form States</h3>
+                      <p>Form states help to validate form and check when it is dirty or valid.</p>
+                      <p>It contains:
+                          <ul>
+                            <li>$valid</li>
+                            <li>$invalid</li>
+                            <li>$dirty</li>
+                            <li>$pristine</li>
+                            <li>$touched</li>
+                            <li>$untouched</li>
+                          </ul>
+                      </p>
+
+                      <form name="formState">
+                          Name:<input type="text" name="name" ng-model="name" required>
+                          Age:<input type="text" name="age" ng-model="age" required>
+                      </form>
+
+                      <div class="alert alert-danger" 
+                           ng-show="(!formState.$valid 
+                                      && formState.$dirty)">Form is not valid
+                      </div>
+                      $valid: {{formState.$valid}}<br>    
+                      $invalid: {{formState.$invalid}}<br>    
+                      <hr>
+                      $dirty: {{formState.$dirty}}<br>    
+                      $pristine: {{formState.$pristine}}<br>                         
+                      <br><br>
+                    </div>
+                  </div>  
+                </div>
+              </div> 
+            </div> 
+
+
+
+          </div>
+
+      </div>
+    </body>
+</html>
+
+
+<!--
+  Continuar daqui
+  https://www.udemy.com/course/angularjs-in-action/learn/lecture/7197412#overview
+-->
