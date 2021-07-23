@@ -1,0 +1,46 @@
+<html>
+  
+  <head>
+    <title>AngularJs in Action Documentation</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="./dist/index.js"></script>
+  </head>
+
+  <body ng-app="myApp" ng-controller="formsController">
+      
+      <h2 class="text-center">Documentation of Directives</h2>
+
+      <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+
+            <!--ng-model -->
+            <document-section data-title="ng-model from directive attribute">
+              <h3>ng-model</h3>
+              <p>it stores the value of the form fields into the controller into a scope variable</p>
+              <input type="text" data-ng-model="form.carType" />
+              <input type="checkbox" data-ng-model="form.hasTurbo" />
+            
+              <br>
+                {{form}}
+              <br>
+            </document-section>
+
+
+            <!--ng-disabled -->
+            <document-section data-title="ng-disabled from directive attribute"> 
+              <h3>ng-disabled</h3>
+              <p>Disabled the form field if the condition is true</p>
+              <input type="text" data-ng-model="formDisabled.name" data-ng-disabled="formDisabled.disableName" />
+              <input type="checkbox" data-ng-model="formDisabled.disableName" />
+              
+              <br>
+              {{formDisabled}}
+              <br>
+            </document-section>
+          </div>
+
+      </div>
+  </body>
+
+</html>

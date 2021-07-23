@@ -1,7 +1,7 @@
 {
-  "name": "npm-test",
+  "name": "directives",
   "version": "0.1.0",
-  "description": "Simple application to learn about npm",
+  "description": "Directives exercices for the course",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
