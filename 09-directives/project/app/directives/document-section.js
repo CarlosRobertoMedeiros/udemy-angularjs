@@ -11,7 +11,7 @@ app.directive("documentSection", function(){
 		scope:{
 			title: '@'
 		},
-		templateUrl: './app/directives/document-section.html'
+		templateUrl: './app/directives/templates/document-section.html'
 	};
 
 });

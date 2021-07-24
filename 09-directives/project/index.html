@@ -34,6 +34,60 @@
               <!-- directive: comment-test -->
             </document-section> 
 
+            <!-- template test  -->
+            <document-section data-title="Directive Using Template">
+              <span data-template-test></span>
+            </document-section> 
+
+            <!-- templateUrl test  -->
+            <document-section data-title="Directive Using Template Url">
+              <span data-template-url-test></span>
+            </document-section> 
+
+            <!-- scope used from the controller  -->
+            <document-section data-title="Directive Using Scope from Controller">
+              <span data-controller-scope></span>
+            </document-section> 
+
+            <!-- scope used from the controller  -->
+            <document-section data-title="Directive With Isolated Scope">
+              <span data-isolated-scope></span>
+            </document-section> 
+
+            <!-- sending scope variable as attribute with =  -->
+            <!-- With = I create the two way data bind with a bidirectional bind -->
+            <document-section data-title="Directive receiving attribute from scope using = (Equals)">
+              <attribute-scope form="checkbox.cb3" title="dropdownArray[0].name"></attribute-scope>
+            </document-section> 
+
+            <!-- sending scope variable as attribute with @  String Value is Passed By Parameter-->
+            <document-section data-title="Directive receiving attribute from scope using @(At)'String'">
+              <at-attribute-scope form="checkbox.cb3" title="dropdownArray[0].name"></at-attribute-scope>
+            </document-section> 
+
+            <!-- sending scope variable as attribute with &  -->
+            <!-- With = I create the one way data bind with a unidirectional bind -->
+            <document-section data-title="Directive receiving attribute as function from scope using &(Ampersand)">
+              <send-function form="printMessage(msg)" title="printMessage(msg2)"></send-function>
+            </document-section> 
+
+            <!-- not using transclude  -->
+            <document-section data-title="Directive not using transclude">
+              <no-transclude>Main Text</no-transclude>
+            </document-section> 
+
+            <!-- using transclude  -->
+            <!-- encapsulating values passed by directive --> 
+            <document-section data-title="Directive using transclude">
+              <using-transclude>Main Text</using-transclude>
+            </document-section> 
+
+            <!-- using simple controller -->
+            <document-section data-title="Directive using Controller">
+              <controller-test count="5">Main Text</controller-test>
+            </document-section> 
+
+
           </div>
 
       </div>
@@ -44,12 +98,13 @@
 
 <!-- 
   Continuar daqui 
-  https://www.udemy.com/course/angularjs-in-action/learn/lecture/7197554#overview
+  Capitulo 82
+  https://www.udemy.com/course/angularjs-in-action/learn/lecture/7286748#overview
 
 
 
   para realizar o build:
-    browserify ./project/app/index.js -o /project/dist/index.js
+    browserify ./project/app/index.js -o ./project/dist/index.js
     npm start para subir o servidor node
 
 -->

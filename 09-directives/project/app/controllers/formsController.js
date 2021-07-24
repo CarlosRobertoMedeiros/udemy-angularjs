@@ -56,14 +56,9 @@ var formsController = function($scope){
 		singleValueFromArray: 2
 	};
 
-	//requiredTest
-
-
-
-
-
-
-
+	$scope.printMessage = function(message){
+		alert(message);
+	};
 
 };
 
