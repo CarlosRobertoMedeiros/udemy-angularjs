@@ -1,0 +1,13 @@
+{
+  "name": "routes",
+  "description": "Simple application to learn about routes",
+  "main": "server.js",
+  "authors": [
+    "Carlos Roberto"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/CarlosRobertoMedeiros/udemy-angularjs",
+  "dependencies": {
+    "angular": "1.6.4"
+  }
+}

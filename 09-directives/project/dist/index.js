@@ -73,8 +73,40 @@ app.controller("formsController", ['$scope',formsController]);
 },{"../app":1}],3:[function(require,module,exports){
 "use strict";
 
+
 var app = require('../app');
 
+var createDirective = function(level){
+	return function(){
+		return {	
+			restrict: 'E',
+			controller: ['$scope',function($scope){
+				console.log("Test "+level+ " : controller");
+			}],
+			compile: function(){
+				console.log("Teste "+ level +": compile");
+				return {
+					pre: function(scope, element, attrs){
+						console.log("Teste "+ level +": pré-link");
+					},
+					post: function(scope, element, attrs){
+						console.log("Teste "+ level +": post-link");
+					}
+				}
+			}
+  		};
+	};
+};
+
+
+app.directive('compileTestOne',createDirective("L-One"));
+app.directive('compileTestTwo',createDirective("L-Two"));
+
+module.exports = app;
+},{"../app":1}],4:[function(require,module,exports){
+"use strict";
+
+var app = require('../app');
 
 app.directive('controllerTest',function(){
 	return {
@@ -90,13 +122,10 @@ app.directive('controllerTest',function(){
 			}
 		}]
 	};
-
 });
 
-
-
 module.exports = app;
-},{"../app":1}],4:[function(require,module,exports){
+},{"../app":1}],5:[function(require,module,exports){
 "use strict";
 
 var app = require('../app');
@@ -127,7 +156,7 @@ app.directive('elementTest',function(){
 
 module.exports = app;
 
-},{"../app":1}],5:[function(require,module,exports){
+},{"../app":1}],6:[function(require,module,exports){
 "use strict";
 
 var app = require('../app');
@@ -148,7 +177,34 @@ app.directive("documentSection", function(){
 
 
 module.exports = app;
-},{"../app":1}],6:[function(require,module,exports){
+},{"../app":1}],7:[function(require,module,exports){
+"use strict";
+
+
+var app = require('../app');
+
+
+app.directive('linkTest',function(){
+
+	return {
+		restrict: 'E',
+		templateUrl: './app/directives/templates/link-test.html',
+		controller: ['$scope', function($scope){
+			$scope.calls = [];
+			$scope.calls.push("Call from the controller");
+		}],
+		link: function(scope,element,attrs){
+			scope.calls.push("Call from the link");
+			var userData = element.find('user-data');
+			userData.replaceWith('<div> User-count has value of: '+ attrs.userCount+ '</div>');
+			scope.userCount = attrs.userCount;
+		}
+	};
+});
+
+module.exports = app;
+
+},{"../app":1}],8:[function(require,module,exports){
 "use strict";
 
 var app = require('../app');
@@ -198,7 +254,7 @@ app.directive('controllerScope',function(){
 
 
 module.exports = app;
-},{"../app":1}],7:[function(require,module,exports){
+},{"../app":1}],9:[function(require,module,exports){
 "use strict";
 
 
@@ -222,7 +278,7 @@ app.directive('templateTest',function(){
 
 
 module.exports = app;
-},{"../app":1}],8:[function(require,module,exports){
+},{"../app":1}],10:[function(require,module,exports){
 "use strict";
 
 
@@ -256,7 +312,7 @@ app.directive('noTransclude',function(){
 module.exports = app;
 
 
-},{"../app":1}],9:[function(require,module,exports){
+},{"../app":1}],11:[function(require,module,exports){
 "use strict";
 
 var app = require('./app');
@@ -269,6 +325,8 @@ require('./directives/template-types');
 require('./directives/scope-test');
 require('./directives/transclude-test');
 require('./directives/controller-test');
+require('./directives/link-test');
+require('./directives/compile-test');
 
 
 //controllers
@@ -279,4 +337,4 @@ require('./controllers/formsController');
 
 
 
-},{"./app":1,"./controllers/formsController":2,"./directives/controller-test":3,"./directives/directive-types":4,"./directives/document-section":5,"./directives/scope-test":6,"./directives/template-types":7,"./directives/transclude-test":8}]},{},[9]);
+},{"./app":1,"./controllers/formsController":2,"./directives/compile-test":3,"./directives/controller-test":4,"./directives/directive-types":5,"./directives/document-section":6,"./directives/link-test":7,"./directives/scope-test":8,"./directives/template-types":9,"./directives/transclude-test":10}]},{},[11]);

@@ -74,8 +74,26 @@
 				- creating localhost server using ExpressJs
 			
 			Working with Broserify for dist folder
+			
 			Directives
-				- 
+				- Element Directive (E)
+				- Attribute Directive (A)
+				- Class Directive (C)
+				- Comment Directive (M)
+				- Template and TemplateUrl
+				- Isolate Scope
+				- (Equals = ) Attribute on the Scope
+				- (At @) Attribute on the Scope
+				- (Amperstand &) Attribute on the Scope
+				- ng-transclude and transclude
+				- Directive Controllers
+				- Directive Links
+				- Compile Function using pre-link and post-link Methods
+				
+			Router Using ui-router
+				
+				
+				
 		
 		
 		* To emulate the Front End use: http-server
