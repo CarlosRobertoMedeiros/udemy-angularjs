@@ -14,10 +14,55 @@
       <div class="row">
           <div class="col-md-8 col-md-offset-2">
             
-            <!-- element directive -->
-            <document-section data-title="Simple Element Directive">
-              TODO: Add here the first document about $filter
+            <!-- $filter from controller -->
+            <document-section data-title="$filter from Controller">
+              Not filtered: {{name}}<br>
+              Filtered UpperCase: {{filteredNameUpper}}<br>
+              Filtered LowerCase: {{filteredNameLower}}<br>
             </document-section> 
+
+            <!-- binding filter into HTML -->
+            <document-section data-title="Applying filter into HTML">
+              Not filtered: {{unfilteredName}}<br>
+              Filtered UpperCase: {{unfilteredName | uppercase}}<br>
+              Filtered LowerCase: {{unfilteredName | lowercase}}<br>
+              Filtered Amount: {{ammount | currency:'$':2}}<br>
+            </document-section> 
+
+            <!-- searching using filter -->
+            <document-section data-title="Using filter to filter result Out">
+              Search all: <input type="text" ng-model="textToSearch.$"><br>
+              Search state: <input type="text" ng-model="textToSearch.state"><br>
+              <div ng-repeat="d in data | filter:textToSearch">
+                {{d.name}} - {{d.state}}
+              </div>
+            </document-section> 
+
+            <!-- sorting using filter -->
+            <document-section data-title="Using filter to Sort">
+              <select ng-model="sortBy">
+                <option value="name">Name</option>
+                <option value="state">State</option>
+              </select>
+              <div ng-repeat="d in data | orderBy:sortBy">
+                {{d.name}} - {{d.state}}
+              </div>
+            </document-section>
+
+             <!-- creating custom filter -->
+            <document-section data-title="Creating Custom Filter">
+              <h3>Filter Not applied</h3>
+              <div ng-repeat="d in data">
+                {{d.id}} - {{d.name}} - {{d.state}}
+              </div>
+              <h3>Filter APPLIED</h3>
+              <!-- Example with parameter {{d.id | internalId:p1:p2}} -->
+              <div ng-repeat="d in data">
+                {{d.id | internalId}} - {{d.name}} - {{d.state}}
+              </div>
+
+
+            </document-section>
 
           </div>
 

@@ -1,0 +1,41 @@
+<html ng-app="myApp">
+  
+  <head>
+    <title>AngularJs in Action Documentation</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="./dist/index.js"></script>
+  </head>
+
+  <body ng-controller="restController">
+
+    <h2 class="text-center">Documentation of $http and Promises</h2>
+
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+        <!-- calling rest using $http -->
+        <document-section data-title="Calling REST using $http">
+          <div ng-repeat="d in data.users">
+            {{d.name}} - {{d.age}}   
+          </div>
+        </document-section>
+      </div>
+    </div>
+
+    
+   
+
+  </body>
+</html>
+
+
+<!-- 
+  Continuar daqui 
+  Capitulo 108
+  https://www.udemy.com/course/angularjs-in-action/learn/lecture/7363514#overview
+
+  para realizar o build:
+    npm run build
+    npm start para subir o servidor node
+
+-->

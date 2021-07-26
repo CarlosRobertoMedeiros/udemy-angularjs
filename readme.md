@@ -12,15 +12,12 @@
 	#Front End
 		
 		Skills
-			
 			- directive ng-app
 			- directive ng-controller
-			
 			- $scope
 			- $rootScope
 			
 			Events
-			
 				- directive ng-click	
 				- directive ng-change	
 				- directive ng-focus
@@ -44,14 +41,12 @@
 					- directive ng-mouseover
 					
 			Conditionals
-
 				- directive ng-if
 				- directive ng-hide
 				- directive ng-show
 				- directive ng-class
 				
 			Dependency Injection (DI)
-			
 				- Using Controllers
 				- Multiply Controllers
 				- Factory
@@ -59,7 +54,6 @@
 				- Prototype and Inheritance
 			
 			Creating and Submitting Forms
-
 				- directive ng-model
 				- directive ng-disabled
 				- directive ng-submit
@@ -73,7 +67,7 @@
 				- install npm
 				- creating localhost server using ExpressJs
 			
-			Working with Broserify for dist folder
+			Working with Browserify for dist folder
 			
 			Directives
 				- Element Directive (E)
@@ -100,6 +94,12 @@
 				- Using $state
 			
 			Filter
+				- $filter
+				- Bind filter Straight into HTML Using {{var | fukter}}
+				- The Search and orderBy Filters
+				- Custom Filters
+			
+			Promisses, $q and $http
 				- 
 				
 				

@@ -10,6 +10,9 @@ require('./document-section');
 //controllers
 require('./filtersController');
 
+//custom filters
+require('./internal-id-filter');
+
 
 
 
