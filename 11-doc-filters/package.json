@@ -1,7 +1,7 @@
 {
-  "name": "routes",
+  "name": "doc-filters",
   "version": "0.1.0",
-  "description": "Simple application to learn about routes",
+  "description": "Documentation for the Section about filters in AngularJs",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
@@ -11,10 +11,7 @@
   "author": "Carlos Roberto",
   "license": "ISC",
   "dependencies": {
-    "angular": "1.6.4",
-    "@uirouter/angularjs": "^1.0.29",
-    "body-parser": "^1.19.0",
-    "bower": "^1.8.12",
-    "express": "^4.17.1"
+    "express": "~4.7.2",
+    "body-parser": "~1.5.2"
   }
 }

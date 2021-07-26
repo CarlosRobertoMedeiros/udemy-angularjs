@@ -65,8 +65,8 @@
 				- directive ng-submit
 				- checkboxes Changing*
 				- directive ng-options
-				- input States
-				- form States
+				- input states
+				- form states
 			
 			NodeJs and NPM
 				- install node
@@ -91,6 +91,16 @@
 				- Compile Function using pre-link and post-link Methods
 				
 			Router Using ui-router
+				- Adding ui.router
+				- The $state and $urlRouteProvider
+				- Using <a ui-sref>
+				- The ng-include
+				- Rendering Pages into Different Views
+				- Adding Controller to the router
+				- Using $state
+			
+			Filter
+				- 
 				
 				
 				
