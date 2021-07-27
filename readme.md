@@ -1,6 +1,6 @@
 ### Front End Project With AngularJS
 
-![GitHub top language](https://img.shields.io/github/languages/top/CarlosRobertoMedeiros/revision-stream-java)
+![GitHub top language](https://img.shields.io/github/languages/top/CarlosRobertoMedeiros/udemy-angularjs)
 ### AngularJs 1.6.4 - Revision 
 
 ## Project Arch (1)
