@@ -1,5 +1,8 @@
 ### Front End Project With AngularJS
 
+![GitHub top language](https://img.shields.io/github/languages/top/CarlosRobertoMedeiros/revision-stream-java)
+### AngularJs 1.6.4 - Revision 
+
 ## Project Arch (1)
 	- First Project FrontEnd: AngularJS 1.x
 
