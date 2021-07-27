@@ -9,6 +9,16 @@
 
 ### Tools and Technologies Used ###
 	
+	#Environment 
+		- To install the environment use the node
+			- node install 
+				Look the folder 08-browserified like parameter.
+
+		To "emulate" the Front End use
+			For build use : npm run build
+			For up the server use: npm start
+			"Use two terminal window", one for each.
+	
 	#Front End
 		
 		Skills
@@ -100,13 +110,8 @@
 				- Custom Filters
 			
 			Promisses, $q and $http
-				- 
-				
-				
-				
-		
-		
-		* To emulate the Front End use: http-server
-		- Gulp (in progress)
-		- Bootstrap 4 (in progress)
-		- AngularJS 1.6.4 (in progress)
+				- Using $http
+				- Handling Promises
+				- Moving $http Call out of the Controller
+				- More about $http with Parameters
+				- Creating Promises to Make Asyncronous Functions

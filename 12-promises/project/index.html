@@ -19,6 +19,39 @@
             {{d.name}} - {{d.age}}   
           </div>
         </document-section>
+
+        <!-- Handling promise -->
+        <document-section data-title="Handling Promise">
+          {{process}}<br>
+          <div ng-repeat="d in data.users">
+            {{d.name}} - {{d.age}}   
+          </div>
+        </document-section>
+
+        <!-- refactor from controller to service -->
+        <document-section data-title="Receiving data from Service calling REST API">
+          {{process}}<br>
+          <div ng-repeat="d in dataFromService.users">
+            {{d.name}} - {{d.age}}   
+          </div>
+        </document-section>
+
+        <!-- sending parameters on the GET call -->
+        <document-section data-title="Calling REST API with parameters">
+            {{singleUser.user.id}} - {{singleUser.user.name}} - {{singleUser.user.age}}   
+        </document-section>
+
+        <!-- $q success promise -->
+        <document-section data-title="Returning Success Promise using $q">
+           Async call executed: {{asynCallExecutedSucess}}
+        </document-section>
+
+        <!-- $q error promise -->
+        <document-section data-title="Returning error Promise using $q">
+           Async call executed: {{asynCallExecutedError}}
+        </document-section>
+
+
       </div>
     </div>
 

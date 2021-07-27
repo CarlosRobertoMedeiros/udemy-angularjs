@@ -13,18 +13,27 @@ console.log("App listening on port " + port);
 
 //User api
 server.get('/api/users',function(req,res){
-  //call DB
-  var users = [];
-  users.push({"name":"Carlos Roberto","age":39});
-  users.push({"name":"Luciene Alves","age":37});
-  users.push({"name":"Ezequias Alves","age":36});
+  
+  if(req.query.id !== undefined){
 
-  var response = {
-    "totalCount": users.length,
-    "users":users
-  };
+    console.log("Query user by id:"+req.query.id);
+    res.json({"id":req.query.id, "name":"Carlos Roberto","age":39});
 
-  res.json(response);
+  }else{
+
+    //call DB
+    var users = [];
+    users.push({"name":"Carlos Roberto","age":39});
+    users.push({"name":"Luciene Alves","age":37});
+    users.push({"name":"Ezequias Alves","age":36});
+
+    var response = {
+      "totalCount": users.length,
+      "users":users
+    };
+
+    res.json(response);
+  }
 
 });
 

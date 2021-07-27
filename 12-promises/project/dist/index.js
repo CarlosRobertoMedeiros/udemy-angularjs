@@ -33412,26 +33412,139 @@ require('./app');
 //controllers
 require('./rest-controller');
 
+//services
+require('./user-api-service');
+require('./promise-service');
 
 //directives
 require('./document-section');
-},{"./app":3,"./document-section":4,"./rest-controller":6,"angular":2}],6:[function(require,module,exports){
+
+
+},{"./app":3,"./document-section":4,"./promise-service":6,"./rest-controller":7,"./user-api-service":8,"angular":2}],6:[function(require,module,exports){
 "use strict";
 
 var app = require('./app');
 
-var restController = function($scope,$http){
+
+var promiseService = function($q){
+
+	this.asyncCall = function(isSuccess){
+
+		var deferred = $q.defer();
+
+		if (isSuccess || isSuccess === undefined){
+			deferred.resolve("It worked fine")
+		}else{
+			deferred.reject("Something went wrong on your call. Bad luck. ");
+		}
+		return deferred.promise;
+	};
+
+};
+
+
+app.service("promiseService", ['$q',promiseService]);
+
+//module.exports = app;
+},{"./app":3}],7:[function(require,module,exports){
+"use strict";
+
+var app = require('./app');
+
+var restController = function($scope,$http, $timeout,userApiService, promiseService){
 
 	$scope.data;
+	$scope.process = 'processing....';
+	
 	$http({
 		method: 'GET',
 		url: '/api/users'
 	}).then(function(response){
-		$scope.data = response.data;
+		$timeout(function(){
+			$scope.data = response.data;	
+			$scope.process = 'processed';
+		}, 2000);
+		
 	});
+
+	$scope.dataFromService = userApiService.getUsers();
+	$scope.singleUser = userApiService.getUserById(1234);
+	$scope.process = 'almost there';
+
+	$scope.asynCallExecutedSucess = false;
+	promiseService.asyncCall(true).then(
+		function(data){
+			$scope.asynCallExecutedSucess = data;
+		},function(error){
+			$scope.asynCallExecutedSucess = error;
+		});
+
+	promiseService.asyncCall(false).then(
+		function(data){
+			$scope.asynCallExecutedError = data;
+		},function(error){
+			$scope.asynCallExecutedError = error;
+		});
+
+
 };
 
 
-app.controller("restController", ['$scope','$http',restController]);
+app.controller("restController", ['$scope','$http','$timeout', 'userApiService' , 'promiseService', restController]);
+module.exports = app;
+},{"./app":3}],8:[function(require,module,exports){
+"use strict";
+
+var app = require('./app');
+
+var userApiService = function($http){
+
+	this.getCall = function(params){
+		return $http.get('api/users', params);
+	};
+
+	this.getUsers = function(){
+		
+		var data = {
+			users:undefined,
+			error: undefined
+		};
+
+		var successCallback = function(response){
+			data.users = response.data.users;
+		};
+
+		var errorCallback = function(error){data = error;};
+		this.getCall().then(successCallback, errorCallback);
+
+		return data;
+	};
+
+	this.getUserById = function(userId){
+		var data = {
+			user:undefined,
+			error:undefined
+		};
+
+		var obj = {
+			params:{
+				id:userId
+			}
+		};
+		var successCallback = function(response){
+			data.user = response.data;
+		};
+
+		var errorCallback = function(error){data = error;};
+		this.getCall(obj).then(successCallback, errorCallback);
+		
+		return data;
+
+	};
+};
+
+app.service("userApiService", ['$http',userApiService]);
+
+
 module.exports = app;
 },{"./app":3}]},{},[5]);
