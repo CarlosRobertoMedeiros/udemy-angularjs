@@ -118,3 +118,5 @@
 				- Moving $http Call out of the Controller
 				- More about $http with Parameters
 				- Creating Promises to Make Asyncronous Functions
+			
+			Creating a blog
