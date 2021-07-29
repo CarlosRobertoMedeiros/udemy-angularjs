@@ -1,0 +1,20 @@
+<div class="col-md-11 col-md-offset-1">
+  
+  <div class="page-header">
+    <h3 id="post{{post.id}}">{{post.title}}<small><br>{{post.subtitle}}</small></h3>
+  </div>
+  <p>{{post.content}}</p>
+	
+
+  <div class="row" ng-repeat="msg in post.messages">
+    <div class="col-md-11">
+      <p>
+        <small>
+          {{msg.message}}
+          <small> --Added by {{msg.author}}</small>
+        </small>
+      </p>
+    </div>
+  </div>    
+
+</div>

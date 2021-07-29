@@ -1,6 +1,6 @@
 "use strict";
 
-var app = angular.module('blog', ['ui.router','toastr']);
+var app = angular.module('blogApp', ['ui.router','toastr']);
 
 app.config(function($stateProvider, $urlRouterProvider){
 

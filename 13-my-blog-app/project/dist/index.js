@@ -55865,7 +55865,7 @@ return jQuery;
 },{}],87:[function(require,module,exports){
 "use strict";
 
-var app = angular.module('blog', ['ui.router','toastr']);
+var app = angular.module('blogApp', ['ui.router','toastr']);
 
 app.config(function($stateProvider, $urlRouterProvider){
 
@@ -55894,17 +55894,80 @@ require('./app');
 
 //controllers
 require('./view/blog-post-controller');
-},{"./app":87,"./view/blog-post-controller":89,"@uirouter/angularjs":1,"angular":85,"angular-toastr":83,"jquery":86}],89:[function(require,module,exports){
+
+
+
+//directives
+require('./view/blog-post-directive');
+},{"./app":87,"./view/blog-post-controller":89,"./view/blog-post-directive":90,"@uirouter/angularjs":1,"angular":85,"angular-toastr":83,"jquery":86}],89:[function(require,module,exports){
 "use strict";
 
 var app = require('../app');
 
 var blogPostController = function($scope){
+	$scope.posts = [];
+
+	$scope.posts.push({
+		"id": 1,
+		"title":"This is my Title",
+		"subtitle":"This is my subTitle to test",
+		"content":"This is my content.This is my content.This is my content.This is my content",
+		"messages": [
+			{"author": "Carlos Roberto", "message": "Thanks for the awesome post."},
+			{"author": "Luciene Alves", "message": "That was great. It made my day"}
+		]
+	});
+
+	$scope.posts.push({
+		"id": 2,
+		"title":"This is my Title",
+		"subtitle":"This is my subTitle to test",
+		"content":"This is my content.This is my content.This is my content.This is my content",
+		"messages": [
+			{"author": "Carlos Roberto", "message": "Thanks for the awesome post."},
+			{"author": "Luciene Alves", "message": "That was great. It made my day"}
+		]
+	});
+
+	$scope.posts.push({
+		"id": 3,
+		"title":"This is my Title",
+		"subtitle":"This is my subTitle to test",
+		"content":"This is my content.This is my content.This is my content.This is my content",
+		"messages": [
+			{"author": "Carlos Roberto", "message": "Thanks for the awesome post."},
+			{"author": "Luciene Alves", "message": "That was great. It made my day"}
+		]
+	});
+
 
 };
 
 
 app.controller("blogPostController", ['$scope', blogPostController]);
+
+module.exports = app;
+},{"../app":87}],90:[function(require,module,exports){
+"use strict";
+
+var app = require('../app');
+
+app.directive("blogPost",function(){
+	return {
+		restrict: 'E',
+		templateUrl: './app/view/templates/blog-post.html',
+		scope:{
+			post:'='
+		},
+		controller: ['$scope', function($scope){
+			$scope.messageContent = "";
+			$scope.addMessage = function(){
+
+			};
+		}]
+	}
+
+});
 
 module.exports = app;
 },{"../app":87}]},{},[88]);

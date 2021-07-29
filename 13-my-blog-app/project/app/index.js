@@ -10,3 +10,8 @@ require('./app');
 
 //controllers
 require('./view/blog-post-controller');
+
+
+
+//directives
+require('./view/blog-post-directive');
