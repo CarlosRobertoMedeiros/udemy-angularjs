@@ -2,46 +2,23 @@
 
 var app = require('../app');
 
-var blogPostController = function($scope){
+var blogPostController = function($scope, $location, $anchorScroll, dataService){
 	$scope.posts = [];
-
-	$scope.posts.push({
-		"id": 1,
-		"title":"This is my Title",
-		"subtitle":"This is my subTitle to test",
-		"content":"This is my content.This is my content.This is my content.This is my content",
-		"messages": [
-			{"author": "Carlos Roberto", "message": "Thanks for the awesome post."},
-			{"author": "Luciene Alves", "message": "That was great. It made my day"}
-		]
-	});
-
-	$scope.posts.push({
-		"id": 2,
-		"title":"This is my Title",
-		"subtitle":"This is my subTitle to test",
-		"content":"This is my content.This is my content.This is my content.This is my content",
-		"messages": [
-			{"author": "Carlos Roberto", "message": "Thanks for the awesome post."},
-			{"author": "Luciene Alves", "message": "That was great. It made my day"}
-		]
-	});
-
-	$scope.posts.push({
-		"id": 3,
-		"title":"This is my Title",
-		"subtitle":"This is my subTitle to test",
-		"content":"This is my content.This is my content.This is my content.This is my content",
-		"messages": [
-			{"author": "Carlos Roberto", "message": "Thanks for the awesome post."},
-			{"author": "Luciene Alves", "message": "That was great. It made my day"}
-		]
-	});
+	$scope.postId;
+	
+	$scope.posts = dataService.getPostData();
+	$scope.basicInfo = dataService.getBasicInfoData();
+	$scope.social = dataService.getSocialData();
 
 
+	$scope.focusOnPost = function(postId){
+		if (!postId) return;
+		$location.hash('post'+postId);
+		$anchorScroll();
+	};
 };
 
 
-app.controller("blogPostController", ['$scope', blogPostController]);
+app.controller("blogPostController", ['$scope','$location', '$anchorScroll' , 'dataService',blogPostController]);
 
 module.exports = app;

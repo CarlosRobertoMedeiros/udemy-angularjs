@@ -55874,6 +55874,8 @@ app.config(function($stateProvider, $urlRouterProvider){
 	};
 
 	createState("view",{url:"/",templateUrl: './app/view/templates/view.html'});
+	createState("profile",{url:"/profile",templateUrl: './app/profile/templates/view.html'});
+	createState("entries",{url:"/entries",templateUrl: './app/entries/templates/view.html'});
 
 	$urlRouterProvider.otherwise('/');
 });
@@ -55882,6 +55884,38 @@ module.exports = app;
 
 
 },{}],88:[function(require,module,exports){
+"use strict";
+
+var app = require('../app');
+
+var entriesController = function($scope, dataService, toastr) {
+  $scope.basicInfo = dataService.getBasicInfoData();
+  $scope.social = dataService.getSocialData();
+  $scope.postEdit = angular.copy(dataService.getNewPostData());
+
+  $scope.submitPost = function() {
+    dataService.createPost($scope.postEdit);
+    toastr["success"]("Your new post is published");
+  };
+};
+
+app.controller("entriesController", ['$scope', 'dataService', 'toastr', entriesController]);
+
+module.exports = app;
+
+},{"../app":87}],89:[function(require,module,exports){
+"use strict"
+
+var app = require('./app');
+
+var homeController = function($scope){
+	$scope.currentMenu = 'view';
+};
+
+app.controller("homeController",['$scope', homeController]);
+
+module.exports = app;
+},{"./app":87}],90:[function(require,module,exports){
 "use strict";
 
 var jquery = require('jquery');
@@ -55893,61 +55927,73 @@ require('@uirouter/angularjs');
 require('./app');
 
 //controllers
+require('./home-controller');
 require('./view/blog-post-controller');
-
-
+require('./profile/profile-controller');
+require('./entries/entries-controller');
 
 //directives
 require('./view/blog-post-directive');
-},{"./app":87,"./view/blog-post-controller":89,"./view/blog-post-directive":90,"@uirouter/angularjs":1,"angular":85,"angular-toastr":83,"jquery":86}],89:[function(require,module,exports){
+
+//services
+require('./view/mock-data-service');
+require('./view/data-service');
+},{"./app":87,"./entries/entries-controller":88,"./home-controller":89,"./profile/profile-controller":91,"./view/blog-post-controller":92,"./view/blog-post-directive":93,"./view/data-service":94,"./view/mock-data-service":95,"@uirouter/angularjs":1,"angular":85,"angular-toastr":83,"jquery":86}],91:[function(require,module,exports){
 "use strict";
 
 var app = require('../app');
 
-var blogPostController = function($scope){
-	$scope.posts = [];
+var profileController = function($scope, dataService, toastr){
+	$scope.basicInfo = dataService.getBasicInfoData();
+	$scope.social = dataService.getSocialData();
 
-	$scope.posts.push({
-		"id": 1,
-		"title":"This is my Title",
-		"subtitle":"This is my subTitle to test",
-		"content":"This is my content.This is my content.This is my content.This is my content",
-		"messages": [
-			{"author": "Carlos Roberto", "message": "Thanks for the awesome post."},
-			{"author": "Luciene Alves", "message": "That was great. It made my day"}
-		]
-	});
+	$scope.basicInfoEdit = angular.copy($scope.basicInfo);//Quebrando o fluxo de notificação
+	$scope.socialEdit = angular.copy($scope.social);//Quebrando o fluxo de notificação
+	
+	$scope.saveBasicForm = function(){
+		dataService.saveBasicInfo(angular.copy($scope.basicInfoEdit));
+		$scope.basicInfo = angular.copy($scope.basicInfoEdit);
+		toastr["success"]("Basic info saved successfully! ");
 
-	$scope.posts.push({
-		"id": 2,
-		"title":"This is my Title",
-		"subtitle":"This is my subTitle to test",
-		"content":"This is my content.This is my content.This is my content.This is my content",
-		"messages": [
-			{"author": "Carlos Roberto", "message": "Thanks for the awesome post."},
-			{"author": "Luciene Alves", "message": "That was great. It made my day"}
-		]
-	});
+	};
 
-	$scope.posts.push({
-		"id": 3,
-		"title":"This is my Title",
-		"subtitle":"This is my subTitle to test",
-		"content":"This is my content.This is my content.This is my content.This is my content",
-		"messages": [
-			{"author": "Carlos Roberto", "message": "Thanks for the awesome post."},
-			{"author": "Luciene Alves", "message": "That was great. It made my day"}
-		]
-	});
-
+	$scope.saveSocialForm = function(){
+		dataService.saveSocial(angular.copy($scope.socialEdit));
+		$scope.social = dataService.getSocialData();// também pode fazer como em cima angular.copy($scope.socialEdit);
+		toastr["success"]("Your social data is safe and sound now.", "It´s saved successfully! ");
+	};
 
 };
 
-
-app.controller("blogPostController", ['$scope', blogPostController]);
+app.controller("profileController", ['$scope' , 'dataService', 'toastr', profileController]);
 
 module.exports = app;
-},{"../app":87}],90:[function(require,module,exports){
+},{"../app":87}],92:[function(require,module,exports){
+"use strict";
+
+var app = require('../app');
+
+var blogPostController = function($scope, $location, $anchorScroll, dataService){
+	$scope.posts = [];
+	$scope.postId;
+	
+	$scope.posts = dataService.getPostData();
+	$scope.basicInfo = dataService.getBasicInfoData();
+	$scope.social = dataService.getSocialData();
+
+
+	$scope.focusOnPost = function(postId){
+		if (!postId) return;
+		$location.hash('post'+postId);
+		$anchorScroll();
+	};
+};
+
+
+app.controller("blogPostController", ['$scope','$location', '$anchorScroll' , 'dataService',blogPostController]);
+
+module.exports = app;
+},{"../app":87}],93:[function(require,module,exports){
 "use strict";
 
 var app = require('../app');
@@ -55962,7 +56008,9 @@ app.directive("blogPost",function(){
 		controller: ['$scope', function($scope){
 			$scope.messageContent = "";
 			$scope.addMessage = function(){
-
+				var newMessage = {author: 'Unknown', message: $scope.messageContent};
+				$scope.post.messages.push(newMessage);
+				$scope.messageContent = "";
 			};
 		}]
 	}
@@ -55970,4 +56018,108 @@ app.directive("blogPost",function(){
 });
 
 module.exports = app;
-},{"../app":87}]},{},[88]);
+},{"../app":87}],94:[function(require,module,exports){
+"use strict";
+
+var app = require('../app');
+
+var dataService = function(mockDataService){
+	this.data = [];
+	
+	this.data.push(mockDataService.getPost("Learn Angular from scratch",
+										   "Create cool projects learning AngularJs"));
+
+	this.data.push(mockDataService.getPost("Java Algorithms and DS",
+										   "Become a Java PRO"));
+
+	this.data.push(mockDataService.getPost("Learn Angular from scratch",
+										   "Create cool projects learning AngularJs"));
+
+	this.data.push(mockDataService.getPost("Java Algorithms and DS",
+										   "Become a Java PRO"));
+
+	this.newPost = {
+	    id: Math.random(),
+	    title: undefined,
+	    subtitle: undefined,
+	    content: undefined,
+	    messages: []
+  	};
+
+	this.basicInfo = {
+		name:"Carlos Roberto",
+		introduction: "I love generate value for my client."
+	};
+
+	this.social = {
+		works: 'my company',
+		lives: 'Brasilia, Brazil',
+		birthday: new Date('1981-12-12T05:00:00.000Z'),
+		from: 'Brazil'
+	};
+
+};
+
+var proto = dataService.prototype;
+
+proto.getNewPostData = function() {
+  return this.newPost;
+};
+
+proto.getPostData = function(){
+	return this.data;
+};
+
+proto.createPost = function(data){
+	this.data.unshift( angular.copy(data) );	
+};
+
+proto.getBasicInfoData = function(){
+	return this.basicInfo;
+};
+
+proto.saveBasicInfo = function(data){
+	return this.data;
+};
+
+proto.getSocialData = function(){
+	return this.social;
+
+};
+
+proto.saveSocial = function(data){
+	this.social = data;
+};
+
+app.service('dataService', ['mockDataService',dataService]);
+
+
+
+
+},{"../app":87}],95:[function(require,module,exports){
+"use strict";
+
+var app = require('../app');
+
+
+var mockDataService = function(){
+	this.getPost = function(title, subtitle){
+		return {
+			"id": Math.random(),
+			"title":title,
+			"subtitle":subtitle,
+			"content":"This guy is posting into "+ title + " thinking that the subtitle " + subtitle + " is correct",
+			"messages": [
+				{"author": "Carlos Roberto", "message": "Thanks for the awesome post" + title},
+				{"author": "Luciene Alves", "message": "That was great. It made my day"}
+			]
+		};
+
+	};
+};
+
+app.service("mockDataService", mockDataService);
+
+
+module.exports = app;
+},{"../app":87}]},{},[90]);

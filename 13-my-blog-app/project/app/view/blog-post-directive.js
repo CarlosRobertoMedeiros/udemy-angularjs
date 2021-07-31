@@ -12,7 +12,9 @@ app.directive("blogPost",function(){
 		controller: ['$scope', function($scope){
 			$scope.messageContent = "";
 			$scope.addMessage = function(){
-
+				var newMessage = {author: 'Unknown', message: $scope.messageContent};
+				$scope.post.messages.push(newMessage);
+				$scope.messageContent = "";
 			};
 		}]
 	}

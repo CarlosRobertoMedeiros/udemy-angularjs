@@ -1,13 +1,13 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" ng-controller="homeController">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" ui-sref="view">
-          Blog Angular
+          Blog AngularJS
       </a>
       <ul class="nav navbar-nav">
-        <li class="active"><a ui-sref="view">View</a></li>
-        <li><a ui-sref="profile">My Profile</a></li>
-        <li><a ui-sref="entries">Blog Entries</a></li>
+        <li ng-class="{'active': currentMenu ==='view'}"><a ui-sref="view" ng-click="currentMenu = 'view'">View</a></li>
+        <li ng-class="{'active': currentMenu ==='profile'}"><a ui-sref="profile" ng-click="currentMenu = 'profile'">My Profile</a></li>
+        <li ng-class="{'active': currentMenu ==='entries'}"><a ui-sref="entries" ng-click="currentMenu = 'entries'">Blog Entries</a></li>
       </ul>
     </div>
   </div>
